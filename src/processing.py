@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Iterable
 
 # state = [
 #     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
@@ -8,7 +8,9 @@ from typing import Any
 #     ]
 
 
-def filter_by_state(states: list[dict[str, Any]], stat_id: str = "EXECUTED") -> list[dict[str, Any]] | bool:
+def filter_by_state(
+    states: list[dict[str, Any | None]], stat_id: str = "EXECUTED"
+) -> list[dict[str, Any | None]] | bool:
     """Функция сортировки по ключу state"""
     new_state = []
     for key in states:
@@ -18,3 +20,12 @@ def filter_by_state(states: list[dict[str, Any]], stat_id: str = "EXECUTED") -> 
 
 
 # print(filter_by_state(state))
+
+
+def sort_by_date(state: Iterable[Any], reverse: bool = True) -> Iterable[Any | bool]:
+    """Функция сортировки по дате"""
+    sorted_date = sorted(state, key=lambda state: state.get("date"), reverse=reverse)
+    return sorted_date
+
+
+# print(sort_by_date(state))
