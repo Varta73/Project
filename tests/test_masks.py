@@ -33,4 +33,5 @@ def test_get_mask_account(number_1, expected_1):
     assert get_mask_account(number_1) == expected_1
     assert get_mask_account(" ") == "Некорректные данные"
     assert get_mask_account("7158300734726758") == "Некорректные данные"
+    assert get_mask_account("Счет 6468647367889477958") == "Некорректные данные"
 
