@@ -1,5 +1,4 @@
 import pytest
-from typing import Any
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -32,4 +31,4 @@ def test_get_mask_account(number_1: str, expected_1: str) -> None:
     assert get_mask_account(number_1) == expected_1
     assert get_mask_account(" ") == "Некорректные данные"
     assert get_mask_account("7158300734726758") == "Некорректные данные"
-    # assert get_mask_account("Счет 6468647367889477958") == "Некорректные данные"
+
