@@ -21,7 +21,6 @@ def test_mask_account_card(number: str, expected: str) -> None:
     assert mask_account_card("7158300734726758") == "Некорректные данные"
     assert mask_account_card("Visa Gold 599941422842635") == "Некорректные данные"
     assert mask_account_card(" ") == "Некорректные данные"
-    assert mask_account_card(" ") == "Некорректные данные"
     assert mask_account_card("7158300734726758") == "Некорректные данные"
 
 
