@@ -1,5 +1,5 @@
 import pytest
-from typing import Any, Iterable
+from typing import Any
 from src.processing import filter_by_state, sort_by_date
 
 
