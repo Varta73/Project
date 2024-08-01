@@ -17,3 +17,4 @@ def get_mask_account(acc_number: str) -> Optional[str]:
         return f"Счет {'*' * 2}{acc_number[-4::]}"
     else:
         return "Некорректные данные"
+
