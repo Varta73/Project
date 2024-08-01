@@ -19,8 +19,11 @@ def mask_account_card(string: str) -> str | None:
 def get_data(data: str) -> str:
     """Функция принимает на вход данные о дате и времени и возвращает строку с датой в формате
     "ДД.ММ.ГГГГ"""
-    dat = datetime.strptime(data, format("%Y-%m-%dT%H:%M:%S.%f"))
-    return dat.strftime("%d.%m.%Y")
+    if len(data) == 26:
+        dat = datetime.strptime(data, format("%Y-%m-%dT%H:%M:%S.%f"))
+        return dat.strftime("%d.%m.%Y")
+    else:
+        return "Некорректный формат даты"
 
 
 # print(get_data("2024-07-22T02:26:18.671407"))
