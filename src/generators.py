@@ -68,10 +68,36 @@ else:
     print("Нет транзакций")
 
 
-# def filter_by_currency():
+def transaction_descriptions(transactions: list, description: str) -> Generator[Any, Any, Any]:
+    """Функция принимает список словарей с транзакциями и возвращает описание каждой операции по очереди."""
+    for transaction in transactions:
+        yield transaction["description"]
 
 
-# def transaction_descriptions():
+i_transactions = transaction_descriptions(transactions, "description")
+if transactions != []:
+    while True:
+        try:
+            print(next(i_transactions))
+        except StopIteration:
+            print(" ")
+            break
+else:
+    print("Нет транзакций")
 
 
-# def card_number_generator():
+def card_number_generator(start: int, stop: int) -> Generator[Any, Any, Any]:
+    """Функция генерации номеров карт в заданном диапазоне
+    от 0000 0000 0000 0001 до 9999 9999 9999 9999."""
+    for x in range(start, stop + 1):
+        zero = "0000000000000000"
+        str_sum = zero + str(x)
+        if x <= 0:
+            print("Номер карты не может быть отрицательным или нулевым")
+        else:
+            card_number = f"{str_sum[-16:-12]} {str_sum[-12:-8]} {str_sum[-8:-4]} {str_sum[-4:-1]}{str_sum[-1]}"
+            yield card_number
+
+
+for card_number in card_number_generator(-3, 3):
+    print(card_number)
