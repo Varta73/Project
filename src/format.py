@@ -26,27 +26,30 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
 
-def reader_csv_file(csv_file: str) -> list[Any]:
+def reader_csv_file(csv_path1: Any) -> list[Any]:
     """Функция принимает на вход путь к файлу CSV в качестве аргумента и возвращает список словарей с транзакциями"""
     with open(csv_path1, newline="", encoding="utf-8") as f:
         csv_result = []
-        csv_dicts = {}
         try:
             reader_csv = csv.DictReader(f, delimiter=";")
             logger.info("Формат файла csv верный")
             for row in reader_csv:
-                csv_dicts["id"] = row["id"]
-                csv_dicts["state"] = row["state"]
-                csv_dicts["date"] = row["date"]
-                csv_dicts["amount"] = row["amount"]
-                csv_dicts["currency_name"] = row["currency_name"]
-                csv_dicts["currency_code"] = row["currency_code"]
-                csv_dicts["from"] = row["from"]
-                csv_dicts["to"] = row["to"]
-                csv_dicts["description"] = row["description"]
-                csv_result.append(csv_dicts)
+                csv_result.append(row)
             return csv_result
         except Exception:
             logger.warning("Некорректные данные")
     return []
 print(reader_csv_file(csv_path1))
+
+
+def reader_xlsx_file(xlsx_path1: Any) -> list[Any]:
+    """Функция принимает на вход путь к файлу Excel в качестве аргумента и возвращает список словарей с транзакциями"""
+    try:
+        df_dict = pd.read_excel(xlsx_path1, index_col=0)
+        list_of_dicts = df_dict.to_dict('records')
+        logger.info("Формат файла xlsx верный")
+        return list_of_dicts
+    except Exception:
+        logger.warning("Некорректные данные")
+        return []
+print(reader_xlsx_file(xlsx_path1))
