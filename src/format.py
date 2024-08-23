@@ -30,7 +30,7 @@ def reader_csv_excel(file_name: str) -> list[dict[Any, Any]]:
     """Принимает путь к файлу csv либо xlsx с информацией о транзакциях.
     Возвращает список словарей транзакций."""
     logger.info("Программа начинает работу.")
-    # Определяем тип файла и применяем необходимый метод обработки.
+    """Обрабатываем csv-файл"""
     if file_name.endswith("csv"):
         csv_result = []
         with open(csv_path1, newline="", encoding="utf-8") as f:
@@ -45,6 +45,7 @@ def reader_csv_excel(file_name: str) -> list[dict[Any, Any]]:
             except Exception as err:
                 logger.error(f"При считывании файла произошла ошибка {err}.")
     elif file_name.endswith("xlsx"):
+        """Обрабатываем xlsx-файл"""
         try:
             logger.info("Программа считывает xlsx файл.")
             df_dict = pd.read_excel(xlsx_path1, index_col=0)
