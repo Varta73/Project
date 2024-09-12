@@ -23,7 +23,7 @@ def get_transaction(file_json: str) -> Any:
 
     """
 
-    with open(file_json, encoding="utf-8") as f:
+    with open(file_json, "r",encoding="utf-8") as f:
         try:
             trans = json.load(f)
             logger.info("Путь до файла JSON верный")
@@ -34,9 +34,9 @@ def get_transaction(file_json: str) -> Any:
             return []
 
 
-print(
-    json.dumps(
-        get_transaction(r"C:\Users\Светлана\PycharmProjects\pythonProject\data\operations.json"),
-        indent=4,
-    )
-)
+# print(
+#     json.dumps(
+#         get_transaction(r"C:\Users\Светлана\PycharmProjects\pythonProject\data\operations.json"),
+#         indent=4,
+#     )
+# )

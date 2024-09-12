@@ -56,16 +56,16 @@ def filter_by_currency(transactions: list, code: str) -> Generator[Any, Any, Any
             yield i
 
 
-i_transactions = filter_by_currency(transactions, "EUR")
+i_transactions = filter_by_currency(transactions, "RUB")
 if transactions != []:
-    while True:
-        try:
-            print(next(i_transactions))
-        except StopIteration:
-            print("Транзакций с заданными условиями нет")
+        while True:
+            try:
+                print(next(i_transactions))
+            except StopIteration:
+                print("Транзакций с заданными условиями нет")
             break
 else:
-    print("Нет транзакций")
+        print("Нет транзакций")
 
 
 def transaction_descriptions(transactions: list, description: str) -> Generator[Any, Any, Any]:
