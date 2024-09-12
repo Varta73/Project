@@ -9,8 +9,8 @@ from typing import Any, Iterable
 
 
 def filter_by_state(
-    states: list[dict[str, Any | None]], stat_id: str = "EXECUTED"
-) -> list[dict[str, Any | None]] | bool:
+    states: list[dict[str, Any | Any]], stat_id: str = "EXECUTED"
+) -> list[dict[str, Any | Any]] | bool:
     """Функция сортировки по ключу state"""
     new_state = []
     for key in states:

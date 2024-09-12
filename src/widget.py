@@ -1,5 +1,7 @@
 from datetime import datetime
 
+import os
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -22,8 +24,11 @@ def get_data(data: str) -> str:
     if len(data) == 26:
         dat = datetime.strptime(data, format("%Y-%m-%dT%H:%M:%S.%f"))
         return dat.strftime("%d.%m.%Y")
+    if len(data) == 20:
+        dat = datetime.strptime(data, format("%Y-%m-%dT%H:%M:%SZ"))
+        return dat.strftime("%d.%m.%Y")
     else:
         return "Некорректный формат даты"
 
 
-# print(get_data("2024-07-22T02:26:18.671407"))
+# print(get_data("2020-08-02T09:35:18Z"))

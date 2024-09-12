@@ -1,7 +1,7 @@
 import csv
 import logging
 import os
-from typing import Any
+from typing import Any, List
 
 import pandas as pd
 
@@ -26,7 +26,7 @@ file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 
 
-def reader_csv_excel(file_name: str) -> list[dict[Any, Any]]:
+def reader_csv_excel(file_name: str) -> list[str] | list[dict]:
     """Принимает путь к файлу csv либо xlsx с информацией о транзакциях.
     Возвращает список словарей транзакций."""
     logger.info("Программа начинает работу.")
